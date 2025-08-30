@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Ecommerce Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">ShopNow</a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <% if (user) { %>
+                        <li><a href="/orders">My Orders</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        <li class="cart-icon">
+                            <a href="/cart">Cart</a>
+                            <span class="cart-count">0</span>
+                        </li>
+                    <% } else { %>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                    <% } %>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <h2 class="auth-title">Register</h2>
+                
+                <% if (error) { %>
+                    <div class="error-message"><%= error %></div>
+                <% } %>
+                
+                <form action="/register" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                </form>
+                
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="/login">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>ShopNow is your one-stop destination for all your shopping needs.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products">Products</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@shopnow.com</p>
+                    <p>Phone: +1 234 567 8900</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopNow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

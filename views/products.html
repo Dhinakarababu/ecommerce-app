@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Ecommerce Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">ShopNow</a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <% if (user) { %>
+                        <li><a href="/orders">My Orders</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        <li class="cart-icon">
+                            <a href="/cart">Cart</a>
+                            <span class="cart-count">0</span>
+                        </li>
+                    <% } else { %>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                    <% } %>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="products-page">
+        <div class="container">
+            <h2 class="section-title">All Products</h2>
+            
+            <% if (category) { %>
+                <h3>Category: <%= category %></h3>
+            <% } %>
+            
+            <div class="products-grid">
+                <% products.forEach(function(product) { %>
+                    <div class="product-card">
+                        <img src="<%= product.image_url %>" alt="<%= product.name %>" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title"><%= product.name %></h3>
+                            <p class="product-price">$<%= product.price %></p>
+                            <div class="product-actions">
+                                <a href="/product/<%= product.id %>" class="btn">View Details</a>
+                                <button class="btn add-to-cart" data-id="<%= product.id %>">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>ShopNow is your one-stop destination for all your shopping needs.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products">Products</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@shopnow.com</p>
+                    <p>Phone: +1 234 567 8900</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopNow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
