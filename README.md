@@ -36,4 +36,4 @@ A full-stack ecommerce website built with HTML, CSS, Node.js, and MySQL.
 - `views/` - HTML templates
 - `server.js` - Main server file
 - `database.sql` - Database schema and sample data
-- `package.json` - Project dependencies and scripts
+- `package.json` - Project dependencies and scripts"# ecommerce-app" 
