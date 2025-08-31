@@ -347,29 +347,6 @@ footer {
     border-top: 1px solid #444;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-    }
-    
-    .nav-links {
-        margin-top: 15px;
-    }
-    
-    .hero h1 {
-        font-size: 36px;
-    }
-    
-    .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-    
-    .footer-content {
-        flex-direction: column;
-    }
-}
-
 /* Auth Pages */
 .auth-container {
     max-width: 400px;
@@ -396,4 +373,121 @@ footer {
     padding: 10px;
     background-color: #f8d7da;
     border-radius: 5px;
+}
+
+/* Product Detail Page Styles */
+.product-detail {
+    padding: 40px 0;
+    min-height: 60vh;
+}
+
+.product-detail-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail .product-image {
+    flex: 1;
+    max-width: 400px;
+}
+
+.product-detail .product-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail .product-info {
+    flex: 1;
+}
+
+.product-detail h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.product-detail .product-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4a6cf7;
+    margin-bottom: 20px;
+}
+
+.product-detail .product-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.product-detail .product-info p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.product-detail .product-info strong {
+    color: #333;
+}
+
+.product-detail .product-actions {
+    margin-top: 30px;
+}
+
+.product-detail .out-of-stock {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #f8d7da;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    
+    .nav-links {
+        margin-top: 15px;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    /* Responsive design for product detail */
+    .product-detail-content {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .product-detail .product-image {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .product-detail h1 {
+        font-size: 24px;
+    }
+    
+    .product-detail .product-price {
+        font-size: 24px;
+    }
 }

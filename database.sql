@@ -56,9 +56,9 @@ CREATE TABLE cart (
 
 -- Insert sample products
 INSERT INTO products (name, description, price, image_url, category, stock_quantity) VALUES
-('Wireless Headphones', 'High-quality wireless headphones with noise cancellation', 99.99, '/images/headphones.jpg', 'Electronics', 50),
+('Wireless Headphones', 'High-quality wireless headphones with noise cancellation', 99.99, '/images/Wireless Headphones.jpg', 'Electronics', 50),
 ('Smart Watch', 'Feature-rich smartwatch with health monitoring', 199.99, '/images/smartwatch.jpg', 'Electronics', 30),
-('Running Shoes', 'Comfortable running shoes for all terrains', 79.99, '/images/shoes.jpg', 'Fashion', 100),
-('Coffee Maker', 'Automatic coffee maker with programmable settings', 49.99, '/images/coffeemaker.jpg', 'Home', 25),
+('Running Shoes', 'Comfortable running shoes for all terrains', 79.99, '/images/Running Shoes.jpg', 'Fashion', 100),
+('Coffee Maker', 'Automatic coffee maker with programmable settings', 49.99, '/images/Coffee Maker.jpg', 'Home', 25),
 ('Backpack', 'Durable backpack with laptop compartment', 39.99, '/images/backpack.jpg', 'Fashion', 75),
 ('Water Bottle', 'Insulated water bottle that keeps drinks cold for 24 hours', 29.99, '/images/waterbottle.jpg', 'Home', 200);

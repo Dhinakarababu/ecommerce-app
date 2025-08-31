@@ -35,7 +35,7 @@ db.connect((err) => {
     console.log('Connected to database');
 });
 
-// Set EJS as templating engine (we'll use HTML files but with EJS-like functionality)
+// Set EJS as templating engine
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'views'));
@@ -334,27 +334,44 @@ app.get('/register', (req, res) => {
 app.post('/register', (req, res) => {
     const { username, email, password, confirmPassword } = req.body;
     
+    console.log('Registration attempt:', { username, email });
+    
     if (password !== confirmPassword) {
+        console.log('Password mismatch');
         return res.render('register', { error: 'Passwords do not match', user: null });
     }
     
     // Check if user already exists
     db.query('SELECT * FROM users WHERE username = ? OR email = ?', [username, email], (err, results) => {
-        if (err) throw err;
+        if (err) {
+            console.log('Database error:', err);
+            throw err;
+        }
+        
+        console.log('Existing users found:', results);
         
         if (results.length > 0) {
+            console.log('User already exists');
             return res.render('register', { error: 'Username or email already exists', user: null });
         }
         
         // Hash password and create user
         bcrypt.hash(password, 10, (err, hash) => {
-            if (err) throw err;
+            if (err) {
+                console.log('Bcrypt error:', err);
+                throw err;
+            }
             
             db.query(
                 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
                 [username, email, hash],
-                (err) => {
-                    if (err) throw err;
+                (err, result) => {
+                    if (err) {
+                        console.log('Insert error:', err);
+                        throw err;
+                    }
+                    
+                    console.log('User inserted successfully, ID:', result.insertId);
                     res.redirect('/login');
                 }
             );
@@ -365,6 +382,20 @@ app.post('/register', (req, res) => {
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
+});
+
+// Debug route to check users in database
+app.get('/debug-users', (req, res) => {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+    
+    db.query('SELECT id, username, email, created_at FROM users', (err, results) => {
+        if (err) throw err;
+        
+        console.log('Users in database:', results);
+        res.json({ users: results });
+    });
 });
 
 // Start server
